@@ -22,7 +22,7 @@ const Homepage = () => {
             <h1 className='font-bold text-4xl mb-3'>User managemnet system</h1>
             <form onSubmit={handleSubmit} className='bg-slate-200 p-5 rounded-lg space-y-4'>
                 <input name='name' type="text" className='block p-3 bg-green-200 rounded-lg' placeholder="your name..." />
-                <input name='number' type="numer" className='block p-3 bg-green-200 rounded-lg' placeholder="your email..." />
+                <input name='number' type="number" className='block p-3 bg-green-200 rounded-lg' placeholder="your email..." />
                 <button type="submit" className='rounded-lg px-4 py-2 bg-green-500'>Submit</button>
             </form>
         </div>

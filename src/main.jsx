@@ -4,6 +4,7 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import LayoutOne from './Layout/LayoutOne.jsx'
 import Homepage from './Components/Homepage/Homepage.jsx'
+import Users from './Components/Users/Users'
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Homepage></Homepage>
+      },
+      {
+        path: '/users',
+        element: <Users></Users>,
+        loader: ()=> fetch("http://localhost:5000/users")
+
       }
     ]
   }
