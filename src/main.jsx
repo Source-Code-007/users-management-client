@@ -5,6 +5,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import LayoutOne from './Layout/LayoutOne.jsx'
 import Homepage from './Components/Homepage/Homepage.jsx'
 import Users from './Components/Users/Users'
+import User from './Components/User/User'
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,11 @@ const router = createBrowserRouter([
         path: '/users',
         element: <Users></Users>,
         loader: ()=> fetch("http://localhost:5000/users")
-
+      },
+      {
+        path: '/user/:id',
+        element: <User></User>,
+        loader: ({params})=> fetch(`http://localhost:5000/user/${params.id}`)
       }
     ]
   }
