@@ -25,11 +25,12 @@ const Users = () => {
                 <div className='grid grid-cols-3 gap-3'>
                     {
                         users && users.map(user => {
-                            return <div key={user._id} className='shadow p-5 rounded bg-slate-100 text-lg space-y-2'>
-                                <h2>name: {user.name}</h2>
-                                <h2>number: {user.number}</h2>
-                                <Link to={`/user/${user._id}`}><button className='bg-green-500 rounded-lg px-4 py-2 font-bold text-xl text-slate-50 mr-3'>Update user</button></Link>
-                                <button onClick={() => handleRemoveUserFunc(user._id)} className='bg-green-500 rounded-lg px-4 py-2 font-bold text-xl text-slate-50'>Remove user</button>
+                            const {_id, name, number} = user || {}
+                            return <div key={_id} className='shadow p-5 rounded bg-slate-100 text-lg space-y-2'>
+                                <h2>name: {name}</h2>
+                                <h2>number: {number}</h2>
+                                <Link to={`/user/${_id}`}><button className='bg-green-500 rounded-lg px-4 py-2 font-bold text-xl text-slate-50 mr-3'>Update user</button></Link>
+                                <button onClick={() => handleRemoveUserFunc(_id)} className='bg-green-500 rounded-lg px-4 py-2 font-bold text-xl text-slate-50'>Remove user</button>
                             </div>
                         })
                     }

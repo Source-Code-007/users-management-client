@@ -18,12 +18,12 @@ const Homepage = () => {
     }
 
     return (
-        <div className=''>
+        <div className=' bg-slate-200'>
             <div className="min-h-screen max-w-7xl justify-center items-center flex flex-col mx-5 lg:mx-auto">
                 <h1 className='font-bold text-4xl mb-3'>User managemnet system</h1>
-                <form onSubmit={handleSubmit} className='bg-slate-200 w-4/6 lg:w-3/6 rounded-lg p-10 space-y-4'>
+                <form onSubmit={handleSubmit} className='bg-slate-50 shadow-inner w-4/6 lg:w-3/6 rounded-lg p-10 space-y-4'>
                     <input name='name' type="text" className='block p-3 bg-green-200 rounded-lg w-full' placeholder="your name..." />
-                    <input name='number' type="number" className='block p-3 bg-green-200 rounded-lg w-full' placeholder="your email..." />
+                    <input name='number' type="email" className='block p-3 bg-green-200 rounded-lg w-full' placeholder="your email..." />
                     <button type="submit" className='rounded-lg px-4 py-2 bg-green-500'>Submit</button>
                 </form>
             </div>
