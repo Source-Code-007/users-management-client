@@ -9,7 +9,7 @@ const Homepage = () => {
         const email = e.target.email.value
         const gender = e.target.gender.value
         const users = { name, email, gender }
-        fetch('http://localhost:5000/users', {
+        fetch('https://user-management-server-nu.vercel.app/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

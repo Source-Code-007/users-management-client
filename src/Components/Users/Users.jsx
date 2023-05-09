@@ -9,7 +9,7 @@ const Users = () => {
     const [users, setUsers] = useState(usersData)
 
     const handleRemoveUserFunc = (id) => {
-        fetch(`http://localhost:5000/user/${id}`, {
+        fetch(`https://user-management-server-nu.vercel.app/user/${id}`, {
             method: 'DELETE'
         }).then(res => res.json())
             .then(data => {

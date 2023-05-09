@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -14,7 +13,7 @@ const User = () => {
         const gender = form.gender.value
         const updatedUser = { name, email, gender }
 
-        fetch(`http://localhost:5000/user/${loadedUser._id}`, {
+        fetch(`https://user-management-server-nu.vercel.app/user/${loadedUser._id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
