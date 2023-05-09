@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Users = () => {
     const usersData = useLoaderData()
@@ -13,7 +15,16 @@ const Users = () => {
                 if (data.deletedCount === 1) {
                     const restUser = users.filter(user => user._id !== id)
                     setUsers(restUser)
-                    console.log('delete successfully')
+                    toast.error('user deleted successfully!', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        });
                 }
             })
     }
@@ -36,6 +47,18 @@ const Users = () => {
                     }
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
     );
 };

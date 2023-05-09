@@ -1,3 +1,6 @@
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Homepage = () => {
 
     const handleSubmit = e => {
@@ -13,7 +16,21 @@ const Homepage = () => {
             },
             body: JSON.stringify(users)
         }).then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                if (data.acknowledged) {
+                    e.target.reset()
+                    toast.success('new user added!', {
+                        position: "top-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                        });
+                }
+            })
             .catch(e => console.log(e.message))
     }
 
@@ -27,6 +44,18 @@ const Homepage = () => {
                     <button type="submit" className='rounded-lg px-4 py-2 bg-green-500'>Submit</button>
                 </form>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
     );
 };
