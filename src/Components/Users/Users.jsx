@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { FaInfoCircle, FaTimes } from 'react-icons/fa';
 
 const Users = () => {
     const usersData = useLoaderData()
@@ -24,7 +25,7 @@ const Users = () => {
                         draggable: true,
                         progress: undefined,
                         theme: "light",
-                        });
+                    });
                 }
             })
     }
@@ -33,18 +34,38 @@ const Users = () => {
         <div className='min-h-screen bg-gray-200 text-gray-700 py-12'>
             <div className='max-w-7xl mx-6 lg:mx-auto'>
                 <h2 className='font-bold text-4xl text-center mb-5'>Users database</h2>
-                <div className='grid grid-cols-3 gap-3'>
-                    {
-                        users && users.map(user => {
-                            const {_id, name, number} = user || {}
-                            return <div key={_id} className='shadow p-5 rounded bg-slate-100 text-lg space-y-2'>
-                                <h2>name: {name}</h2>
-                                <h2>number: {number}</h2>
-                                <Link to={`/user/${_id}`}><button className='bg-green-500 rounded-lg px-4 py-2 font-bold text-xl text-slate-50 mr-3'>Update user</button></Link>
-                                <button onClick={() => handleRemoveUserFunc(_id)} className='bg-green-500 rounded-lg px-4 py-2 font-bold text-xl text-slate-50'>Remove user</button>
-                            </div>
-                        })
-                    }
+                <div className='grid grid-cols-1 gap-3'>
+
+
+                    <div className="overflow-x-auto">
+                        <table className="table w-full">
+                            {/* head */}
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Gender</th>
+                                    <th>Option</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                {
+                                    users && users.map(user => {
+                                        const { _id, name, email, gender } = user
+                                        return <tr key={_id}>
+                                            <td>{_id}</td>
+                                            <td className='font-bold text-xl'>{name}</td>
+                                            <td>{email}</td>
+                                            <td>{gender}</td>
+                                            <td><Link to={`/user/${_id}`}><button className='bg-green-500 rounded-lg px-4 py-2 font-bold text-xl text-slate-50 mr-3'><FaInfoCircle></FaInfoCircle></button></Link> <button onClick={() => handleRemoveUserFunc(_id)} className='bg-green-500 rounded-lg px-4 py-2 font-bold text-xl text-slate-50'><FaTimes></FaTimes></button></td>
+                                        </tr>
+                                    })
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
             <ToastContainer
